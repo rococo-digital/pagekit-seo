@@ -1,7 +1,7 @@
 {
   "name": "spqr/seo",
   "module": "spqr/seo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "pagekit-extension",
   "title": "SEO",
   "description": "Allows you to set up some seo-specific settings.",
