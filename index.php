@@ -1,6 +1,7 @@
 <?php
 
 use Pagekit\Application;
+use Spqr\Seo\Helper\TitleHelper;
 
 return [
     'name' => 'spqr/seo',
@@ -35,13 +36,16 @@ return [
             'meta'  => ['description' => ['enabled' => true, 'use_og' => true]],
             'title' => [
                 'enabled'           => false,
-                'use_og'            => true,
                 'use_sitename'      => true,
+                'use_path'          => false,
                 'use_pagename'      => false,
-                'og_ordering'       => 1,
-                'sitename_ordering' => 2,
+                'use_og'            => true,
+                'path_level'        => 0,
+                'sitename_ordering' => 1,
+                'path_ordering'     => 2,
                 'pagename_ordering' => 3,
-                'separator'         => '|',
+                'og_ordering'       => 4,
+                'separator'         => ' | ',
             ],
         ],
     ],
@@ -51,61 +55,18 @@ return [
         },
         'site'         => function ($event, $app) {
             $app->on('view.meta', function ($event, $meta) use ($app) {
-                if ($this->config('site_structure.meta
-                .description.enabled')
-                ) {
+                $titlehelper = new TitleHelper;
+                
+                if ($this->config('site_structure.meta.description.enabled')) {
                     $meta([
                         'description' => $meta->get('og:description'),
                     ]);
                 }
                 if ($this->config('site_structure.title.enabled')) {
-                    
-                    $title_data = [];
-                    $title      = [];
-                    
-                    if ($this->config('site_structure.title.use_og')
-                        && !empty($meta->get('og:title'))
-                    ) {
-                        $title_data[] = [
-                            'title'    => $meta->get('og:title'),
-                            'ordering' => $this->config('site_structure.title.og_ordering'),
-                        ];
+                    $title = $titlehelper->generateTitle($meta);
+                    if ($title) {
+                        $meta->add('title', $title);
                     }
-                    if ($this->config('site_structure.title.use_sitename')
-                        && !empty($app::config('system/site')->get('title'))
-                    ) {
-                        $title_data[] = [
-                            'title'    => $app::config('system/site')
-                                ->get('title'),
-                            'ordering' => $this->config('site_structure.title.sitename_ordering'),
-                        ];
-                    }
-                    if ($this->config('site_structure.title.use_pagename')
-                        && !empty($app::node()->title)
-                    ) {
-                        $title_data[] = [
-                            'title'    => $app::node()->title,
-                            'ordering' => $this->config('site_structure.title.pagename_ordering'),
-                        ];
-                    }
-                    
-                    $ordering = [];
-                    
-                    foreach ($title_data as $key => $row) {
-                        $ordering[$key] = $row['ordering'];
-                    }
-                    
-                    array_multisort($ordering, SORT_ASC, $title_data);
-                    
-                    foreach ($title_data as $t) {
-                        $title[] = $t['title'];
-                    }
-                    
-                    $title
-                        = implode($this->config('site_structure.title.separator'),
-                        $title);
-                    
-                    $meta->add('title', $title);
                 }
             }, -150);
             

@@ -10,8 +10,10 @@ return [
     'Overwrite Title'            => 'Überschreibe Titel',
     'Use Open Graph Title'       => 'Benutze Open Graph-Titel',
     'Ordering'                   => 'Reihenfolge',
-    'Use Sitename'               => 'Benutze Node-Seitenname',
+    'Use Sitename'               => 'Benutze Webseitenname',
     'Use Pagename'               => 'Benutze Seitenname',
+    'Use Path'                   => 'Benutze Seitenpfad',
+    'Start Level'                => 'Startlevel',
     'Separator'                  => 'Trennzeichen',
     'Save'                       => 'Speichern',
 ];

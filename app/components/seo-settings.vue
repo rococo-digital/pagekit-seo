@@ -24,6 +24,60 @@
                         <input type="checkbox" v-model="package.config.site_structure.title.enabled">
                     </div>
                 </div>
+                <div class="uk-form-row">
+                    <label class="uk-form-label">{{ 'Use Sitename' | trans }}</label>
+                    <div class="uk-form-controls uk-form-controls-text">
+                        <input type="checkbox" v-model="package.config.site_structure.title.use_sitename">
+                    </div>
+                </div>
+                <div class="uk-form-row" v-if="package.config.site_structure.title.use_sitename">
+                    <label for="form-site-structure-title-sitename-ordering"
+                           class="uk-form-label">{{ 'Ordering' | trans }}</label>
+                    <div class="uk-form-controls uk-form-controls-text">
+                        <p class="uk-form-controls-condensed">
+                            <input id="form-site-structure-title-sitename-ordering" type="number"
+                                   class="uk-form-width-large"
+                                   v-model="package.config.site_structure.title.sitename_ordering"
+                                   min="1" number>
+                        </p>
+                    </div>
+                </div>
+                <div class="uk-form-row">
+                    <label class="uk-form-label">{{ 'Use Path' | trans }}</label>
+                    <div class="uk-form-controls uk-form-controls-text">
+                        <input type="checkbox" v-model="package.config.site_structure.title.use_path">
+                    </div>
+                </div>
+                <div class="uk-form-row" v-if="package.config.site_structure.title.use_path">
+                    <label for="form-site-structure-title-path-ordering"
+                           class="uk-form-label">{{ 'Ordering' | trans }}</label>
+                    <div class="uk-form-controls uk-form-controls-text">
+                        <p class="uk-form-controls-condensed">
+                            <input id="form-site-structure-title-path-ordering" type="number"
+                                   class="uk-form-width-large"
+                                   v-model="package.config.site_structure.title.path_ordering"
+                                   min="1" number>
+                        </p>
+                    </div>
+                </div>
+                <div class="uk-form-row">
+                    <label class="uk-form-label">{{ 'Use Pagename' | trans }}</label>
+                    <div class="uk-form-controls uk-form-controls-text">
+                        <input type="checkbox" v-model="package.config.site_structure.title.use_pagename">
+                    </div>
+                </div>
+                <div class="uk-form-row" v-if="package.config.site_structure.title.use_pagename">
+                    <label for="form-site-structure-title-pagename-ordering"
+                           class="uk-form-label">{{ 'Ordering' | trans }}</label>
+                    <div class="uk-form-controls uk-form-controls-text">
+                        <p class="uk-form-controls-condensed">
+                            <input id="form-site-structure-title-pagename-ordering" type="number"
+                                   class="uk-form-width-large"
+                                   v-model="package.config.site_structure.title.pagename_ordering"
+                                   min="1" number>
+                        </p>
+                    </div>
+                </div>
                 <div class="uk-margin-top" v-if="package.config.site_structure.title.enabled">
                     <div class="uk-form-row">
                         <label class="uk-form-label">{{ 'Use Open Graph Title' | trans }}</label>
@@ -43,39 +97,15 @@
                             </p>
                         </div>
                     </div>
-                    <div class="uk-form-row">
-                        <label class="uk-form-label">{{ 'Use Sitename' | trans }}</label>
-                        <div class="uk-form-controls uk-form-controls-text">
-                            <input type="checkbox" v-model="package.config.site_structure.title.use_sitename">
-                        </div>
-                    </div>
-                    <div class="uk-form-row" v-if="package.config.site_structure.title.use_sitename">
-                        <label for="form-site-structure-title-sitename-ordering"
-                               class="uk-form-label">{{ 'Ordering' | trans }}</label>
+                    <div class="uk-form-row" v-if="package.config.site_structure.title.use_path">
+                        <label for="form-site-structure-title-path-ordering"
+                               class="uk-form-label">{{ 'Start Level' | trans }}</label>
                         <div class="uk-form-controls uk-form-controls-text">
                             <p class="uk-form-controls-condensed">
-                                <input id="form-site-structure-title-sitename-ordering" type="number"
+                                <input id="form-site-structure-title-path-level" type="number"
                                        class="uk-form-width-large"
-                                       v-model="package.config.site_structure.title.sitename_ordering"
-                                       min="1" number>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="uk-form-row">
-                        <label class="uk-form-label">{{ 'Use Pagename' | trans }}</label>
-                        <div class="uk-form-controls uk-form-controls-text">
-                            <input type="checkbox" v-model="package.config.site_structure.title.use_pagename">
-                        </div>
-                    </div>
-                    <div class="uk-form-row" v-if="package.config.site_structure.title.use_pagename">
-                        <label for="form-site-structure-title-pagename-ordering"
-                               class="uk-form-label">{{ 'Ordering' | trans }}</label>
-                        <div class="uk-form-controls uk-form-controls-text">
-                            <p class="uk-form-controls-condensed">
-                                <input id="form-site-structure-title-pagename-ordering" type="number"
-                                       class="uk-form-width-large"
-                                       v-model="package.config.site_structure.title.pagename_ordering"
-                                       min="1" number>
+                                       v-model="package.config.site_structure.title.path_level"
+                                       min="0" number>
                             </p>
                         </div>
                     </div>
