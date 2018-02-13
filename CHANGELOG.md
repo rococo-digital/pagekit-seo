@@ -1,3 +1,7 @@
+## 1.0.2
+
+- FIX: Fixes a bug that displayed title options, even if title overwriting is not enabled
+
 ## 1.0.1
 
 - ADD: Supports path in title
