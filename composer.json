@@ -1,6 +1,6 @@
 {
-  "name": "spqr/seo",
-  "module": "spqr/seo",
+  "name": "rococo/seo",
+  "module": "rococo/seo",
   "version": "1.0.2",
   "type": "pagekit-extension",
   "title": "SEO",

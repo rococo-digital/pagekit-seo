@@ -1,16 +1,16 @@
 <?php
 
 use Pagekit\Application;
-use Spqr\Seo\Helper\TitleHelper;
+use rococo\seo\Helper\TitleHelper;
 
 return [
-    'name' => 'spqr/seo',
+    'name' => 'rococo/seo',
     'type' => 'extension',
     'main' => function (Application $app) {
     },
     
     'autoload' => [
-        'Spqr\\Seo\\' => 'src',
+        'rococo\\seo\\' => 'src',
     ],
     
     'routes' => [],
@@ -28,7 +28,7 @@ return [
     'settings' => 'seo-settings',
     
     'resources' => [
-        'spqr/seo:' => '',
+        'rococo/seo:' => '',
     ],
     
     'config' => [
@@ -73,7 +73,7 @@ return [
         },
         'view.scripts' => function ($event, $scripts) use ($app) {
             $scripts->register('seo-settings',
-                'spqr/seo:app/bundle/seo-settings.js', ['~extensions']);
+                'rococo/seo:app/bundle/seo-settings.js', ['~extensions']);
         },
     ],
 ];

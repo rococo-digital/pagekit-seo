@@ -1,13 +1,13 @@
 <?php
 
-namespace Spqr\Seo\Helper;
+namespace rococo\seo\Helper;
 
 use Pagekit\Application as App;
 
 /**
  * Class TitleHelper
  *
- * @package Spqr\Seo\Helper
+ * @package rococo\seo\Helper
  */
 class TitleHelper
 {
